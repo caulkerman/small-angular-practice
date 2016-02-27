@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head>
+	<title></title>
+	
+	<!--///////////STYLES////////////-->
+	<style type="text/css">
+		.alert {
+			height: 50px;
+			background-color: yellow;
+			border: orange solid 2px;
+		}
+
+
+
+	</style>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+</head>
+<body>
+
+	<a href="#"><h1 reply="hey there!">Click on me!</h1></a>
+
+	<button><a ui-sref="page1">Page 1</a></button> 
+	<button><a ui-sref="page2">Page 2</a></button>
+	
+	<h2 class="test">{{test}}</h2>
+	
+	
+	<div ui-view></div>
+	
+
+		<!--////////    SCRIPTS    /////////-->
+<script src="https://code.angularjs.org/1.5.0/angular.min.js"></script>
+<script src="http://angular-ui.github.io/ui-router/release/angular-ui-router.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

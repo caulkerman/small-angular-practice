@@ -1,0 +1,19 @@
+<form>
+		<input type="text" ng-model="name"  ng-keydown="$event.which === 13 && upperCase(name)"/>
+		<!-- <p>{{upperCase()}}</p> -->
+	<input type="button" value="click here"/>
+</form>
+
+	<br />
+
+	<div class="alert" ng-hide="name.length >= characters" ng-show="name.length >= 8">
+		Must be five characters or more for this yellow div to disappear!  It will show back up when there are 8 or more characters!
+	</div>
+
+	<p>And this is some text to take up some space to see if it will move up when the header above fades out, and it does.</p>
+
+	<hr />
+
+	<ul ng-repeat="arr in arrs track by $index">
+		<li>{{arr}}</li>
+	</ul>
