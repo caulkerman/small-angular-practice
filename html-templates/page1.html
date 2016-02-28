@@ -1,7 +1,7 @@
 <form>
-		<input type="text" ng-model="name"  ng-keydown="$event.which === 13 && upperCase(name)"/>
+		<input type="text" ng-model="name"  ng-keydown="$event.which === 13 && upperCase(name)" placeholder="Type Something Here" />
 		<!-- <p>{{upperCase()}}</p> -->
-	<input type="button" value="click here"/ ng-click="upperCase(name)">
+	<input type="button" value="click here" ng-click="upperCase(name)">
 </form>
 
 	<br />
@@ -17,3 +17,4 @@
 	<ul ng-repeat="arr in arrs track by $index">
 		<li>{{arr}}</li>
 	</ul>
+	<p>{{test}}</p>

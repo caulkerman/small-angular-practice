@@ -1,0 +1,36 @@
+.alert {
+			height: 50px;
+			background-color: yellow;
+			border: orange solid 2px;
+			max-width: 450px;
+			border-radius: 5px;
+		}
+
+		.alert2 {
+			background-color: pink;
+			border: orange solid 2px;
+			margin-top: 10px;
+			max-width: 350px;
+			border-radius: 5px;
+		}
+
+		input {
+			height: 25px;
+			border-radius: 5px;
+			border: #0099ff 1px solid;
+		}
+
+		li {
+			list-style: none;
+			font-size: 1.5em;
+			color: blue;
+			background-color: #e69900;
+			width: 250px;
+			border-radius: 5px;
+			height: 40px;
+			padding: 12px 0px 0px 15px;
+		}
+
+		.ng-cloak {
+  			display: none !important;
+		}
