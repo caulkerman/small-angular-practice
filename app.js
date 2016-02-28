@@ -25,7 +25,7 @@ $( document ).ready(function() {
 		});
 		$(".alert").fadeOut(750).delay(2000).fadeIn(2000);
 		//or 
-		// $(".test").hide(750).delay(2000).show(2000);
+		// $(".alert").hide(750).delay(2000).show(2000);
 		
 	});
 
@@ -63,11 +63,11 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 app.controller("myController", ["$scope", "$log", "service", function($scope, $log, service) {
 
-	var getArrs = function() {
+	$scope.getArrs = function() {
 		$scope.arrs = service.arrsFunc();
 	}
 
-	getArrs();
+	$scope.getArrs();
 
 	$scope.test = "This is a test from the controller!"
 	
@@ -77,7 +77,7 @@ app.controller("myController", ["$scope", "$log", "service", function($scope, $l
 		name = name.toUpperCase();
 		service.upperCase(name);
 		$scope.name = "";
-		getArrs();
+		$scope.getArrs();
 	}
 
 }]);
@@ -105,3 +105,21 @@ app.service("service", [function() {
 		return arrs;
 	}
 }]);
+
+
+/////////DIRECTIVE///////////
+
+app.directive("myDirective", function() {
+
+	return {
+
+		restrict: "AECM", 
+		templateUrl: "html-templates/directiveTemplate.html",
+		
+		/*or
+		template: "<dir class="alert2">
+			<p>My address is 4567 Millrock Dr.</p><a href="http://www.google.com" target="blank">Go To Google</a></p></dir>",   */
+		
+		replace: true
+	}
+})

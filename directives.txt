@@ -1,0 +1,27 @@
+Directives:
+
+with a directive you use 
+
+app.directive("nameOfDirective", function() {
+	
+	return {
+
+		restrict: "AECM",
+		
+		templateUrl: "html-templates/directiveTemplate.html",
+		
+		/*or
+		template: "<dir class="alert2">
+			<p>My address is 4567 Millrock Dr.</p><a href="http://www.google.com" target="blank">Go To Google</a></p></dir>",   */
+		
+		replace: true
+	}
+});
+
+Normalize the name using camel case.  The function simply returns an object.
+
+1.  The first property can be restrict.  By default Angular will restrict the directive to be used by both Element(E) and Attribute(A), but you can restrict it to either or/and A E.  If A only, the directive will be used only if it is an attribute to an element, if E then it will only be used if the directive is an element. Two other restrictions are allowed but they are not by default, they must be forced.  They are Class(C) and Comment(M).  Class is added as a class like any other class, and the comment is added by making a comment.
+
+2.  The second property returned is template: It is the HTML that gets outputted when the directive is used.  You may define the template using HTML right there if the template is small, but if it is large and there is a lot going on then the better idea is to create a separate HTML template file and link to it using templateURL: "path/to-file.html".  If you create your own html template, keep in mind that everything must stay within its own single parent element. You may not use more than the one or it will throw an error.
+
+3.  In our directive we used as the third property a property called "replace" and set it to true like this, replace: true.  If you go to the console and look at the elements it shows pure HTML and doesn't show that the HTML is wrapped in the directive.  Interesting.
