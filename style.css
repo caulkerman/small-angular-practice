@@ -1,3 +1,7 @@
+html {
+	font-family: sans-serif;
+}
+
 .alert {
 			height: 50px;
 			background-color: yellow;
@@ -33,4 +37,8 @@
 
 		.ng-cloak {
   			display: none !important;
+		}
+
+		.click-on-me {
+			width: 200px;
 		}

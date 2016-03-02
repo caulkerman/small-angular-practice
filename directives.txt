@@ -13,8 +13,13 @@ app.directive("nameOfDirective", function() {
 		/*or
 		template: "<dir class="alert2">
 			<p>My address is 4567 Millrock Dr.</p><a href="http://www.google.com" target="blank">Go To Google</a></p></dir>",   */
-		
+
 		replace: true
+
+		scope: {
+			personName: "@",
+			personAdddress: "@"
+		}
 	}
 });
 
@@ -25,3 +30,14 @@ Normalize the name using camel case.  The function simply returns an object.
 2.  The second property returned is template: It is the HTML that gets outputted when the directive is used.  You may define the template using HTML right there if the template is small, but if it is large and there is a lot going on then the better idea is to create a separate HTML template file and link to it using templateURL: "path/to-file.html".  If you create your own html template, keep in mind that everything must stay within its own single parent element. You may not use more than the one or it will throw an error.
 
 3.  In our directive we used as the third property a property called "replace" and set it to true like this, replace: true.  If you go to the console and look at the elements it shows pure HTML and doesn't show that the HTML is wrapped in the directive.  Interesting.
+
+4. The scope property allows us to give the directive scope permissions.  By default, if scope has not been defined with a scope property, the directive will share scope with the controller and the controller's particular view template, the view the directive element has been placed into.  The scope property's value is an object, and by simply making a new property called scope and giving it a value of an empty object it has isolated its scope.  Now it has become its own controller (per se) for its own template only.
+	Time to poke some holes through the directive's isolated scope.  The first hole we poke will be using the "@" symbol.  "@" allows text to be moved through. From the directive in the controller's view:
+		
+		<my-directive></my-directive>
+
+	we create a new attribute variable in our directive element, and because this view has access to the controller's scope we can take the name.person and assign it to the new attribute variable like so:
+
+		<my-directive name-person="{{name.person}}"></my-directive>
+
+	We have just created a new attribut variable called name-person and assigned it the name.person property from the controller attached to this view.  Now use personName in the directive and on the directive's html template.

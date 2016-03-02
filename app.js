@@ -73,11 +73,18 @@ app.controller("myController", ["$scope", "$log", "service", function($scope, $l
 	
 	$scope.characters = 5;
 
+	$scope.name = "";
+
 	$scope.upperCase = function(name) {
+		if (name !== "") {
 		name = name.toUpperCase();
 		service.upperCase(name);
 		$scope.name = "";
 		$scope.getArrs();
+		} else {
+			 $log.warn("You must type something into the input box!");
+			 return false;
+		}
 	}
 
 }]);
@@ -86,6 +93,17 @@ app.controller("myController", ["$scope", "$log", "service", function($scope, $l
 app.controller("otherController", ["$scope", function($scope) {
   
   $scope.hey = "HEY!!!!!!! this is the test to see if it is connected to the controller."
+
+  $scope.nisha = {
+  	name: "Nisha Williams",
+  	address: "4567 Millrock Dr, Ditterville, OR 76543",
+  	
+  }
+
+  $scope.randy = {
+  	name: "Randy Williams",
+  	address: "7338 S. State Street, Homertown, OH 93939"
+  }
 
 }]);
 
@@ -120,6 +138,12 @@ app.directive("myDirective", function() {
 		template: "<dir class="alert2">
 			<p>My address is 4567 Millrock Dr.</p><a href="http://www.google.com" target="blank">Go To Google</a></p></dir>",   */
 		
-		replace: true
+		replace: true,
+		scope: {
+			// personName: "@",
+			// personAddress: "@",
+			personObject: "="
+		}
+
 	}
 })
