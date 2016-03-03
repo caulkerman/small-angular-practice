@@ -2,11 +2,25 @@
 
 {{hey}}
 <hr />
-Below is my directive
-
-<!-- As you can see below I am using four different ways to implement the directive into the HTML to show how they work with the restrict property in the directive object. -->
+<h4>Below is my directive.</h4>
 
 <!-- <my-directive person-name="{{ person.name }}" person-address="{{person.address}}"></my-directive> -->
 <my-directive person-object="nisha"></my-directive>
 <div my-directive person-object="randy"></div>
-<!-- <div class="my-directive"></div> -->
+<div class="my-directive" person-object="connor"></div>
+<div my-directive person-object="kyler"></div>
+
+<h4>Below is the same template just using ng-repeat.</h4>
+
+<div class="alert3" ng-repeat="person in people">
+	<div>
+		<p>My name is: {{person.name}}</p>
+		<p>My address is: {{person.address}}</p>
+		<p><a href="{{person.link}}">Go To My Website</a></p>
+		<p>Some guy: {{person.object.peter}}</p>
+	</div>
+</div>
+
+<h4>Below is the directive using a function in ng-repeat.</h4>
+	<my-directive person-object="family" formatted-person-function="formattedPerson(placeHolderVariable)" class="alert2" ng-repeat="family in people"></my-directive>
+<!-- I was able to assign the person-object a single object in the array as long as the object was named such like $scope.randy, I was not able to repeat the whole array, only the one object.  I had to assign the person-object the variable in the ng-repeat in order to work.  Not sure why but that's how it worked. -->

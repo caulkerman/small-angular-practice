@@ -1,8 +1,11 @@
 <div class="alert2">
 	<p>My name is: {{personObject.name}}</p>
 	<p>My address is: {{personObject.address}}</p>
-	
+
 	<!-- <p>My name is: {{personName}}</p>
 	<p>My address is: {{personAddress}}</p> -->
-	<p><a href="http://www.nishamwilliams.com/" target="blank">Go To My Website</a></p>
+	<p><a href={{personObject.link}} target="blank">Go To My Website</a></p>
+	<!-- use a mapping object below -->
+	{{formattedPersonFunction( {placeHolderVariable: personObject} ) }}
+	<!-- the person object above in the mapping object is taken from the second attribute in the directive element on page2.html -->
 </div>

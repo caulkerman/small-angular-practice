@@ -40,7 +40,7 @@ var app = angular.module("myApp", ['ui.router']);
 app.config(function($stateProvider, $urlRouterProvider) {
   
   // For any unmatched url, redirect to /home
-  $urlRouterProvider.otherwise("/page1");
+  // $urlRouterProvider.otherwise("/page1");
   
   $stateProvider
     
@@ -57,6 +57,10 @@ app.config(function($stateProvider, $urlRouterProvider) {
 	})
 
 });
+
+// app.config(["$compileProvider", function ($compileProvider) {
+//     $compileProvider.aHrefSanitizationWhitelist(/^\s*(file|https?|ftp|mailto|app):/);
+// }])
 
 
     ///////////CONTROLLERS//////////////
@@ -87,6 +91,7 @@ app.controller("myController", ["$scope", "$log", "service", function($scope, $l
 		}
 	}
 
+
 }]);
 
 
@@ -94,16 +99,52 @@ app.controller("otherController", ["$scope", function($scope) {
   
   $scope.hey = "HEY!!!!!!! this is the test to see if it is connected to the controller."
 
-  $scope.nisha = {
-  	name: "Nisha Williams",
-  	address: "4567 Millrock Dr, Ditterville, OR 76543",
-  	
-  }
+  	$scope.people = [ //in order for both directives and ng-repeats to work the way it is this must be an array and not an object.
+	  
+	  $scope.nisha = {
+	  	name: "Nisha Williams",
+	  	address: "4567 Millrock Dr, Ditterville, OR 76543",
+	  	link: "http://www.nishamwilliams.com",
+	  	object: {
+	  		peter: "Peter"
+	  	}
+	  },
 
-  $scope.randy = {
-  	name: "Randy Williams",
-  	address: "7338 S. State Street, Homertown, OH 93939"
-  }
+	  $scope.randy = {
+	  	name: "Randy Williams",
+	  	address: "7338 S. State Street, Homertown, OH 93939",
+	  	link: "http://www.randy-williams.branded.me"
+	  },
+
+	  $scope.connor = {
+	  	name: "Connor Williams",
+	  	address: "993 N. Trump Speach Rd, Bombastic, NY 30048",
+	  	link: "http://www.google.com"
+	  },
+
+	  $scope.kyler = {
+	  	name: "Kyler Williams",
+	  	address: "2663 Chilton Circle, Washington, AK 94858",
+	  	link: "http://www.yahoo.com"
+	  },
+
+	  $scope.corbin = {
+	  	name: "Corbin Williams",
+	  	address: "4567 Millrock Dr, Ditterville, OR 76543",
+	  	link: "http://www.bing.com"
+	  }
+	];
+
+	
+
+	
+
+	//below is a function to be used in a directive.  It can be done but it is not a very neat way of doing things.
+	$scope.formattedPerson = function(people) {
+		console.log(people);
+		return "My name is " + people.name + ", and I live at " + people.address + ".  If you want to get to know me, visit my website at " + people.link;
+	}
+
 
 }]);
 
@@ -142,8 +183,8 @@ app.directive("myDirective", function() {
 		scope: {
 			// personName: "@",
 			// personAddress: "@",
-			personObject: "="
+			personObject: "=",
+			formattedPersonFunction: "&"
 		}
-
 	}
 })

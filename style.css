@@ -2,20 +2,32 @@ html {
 	font-family: sans-serif;
 }
 
-.alert {
+		.alert {
 			height: 50px;
 			background-color: yellow;
 			border: orange solid 2px;
 			max-width: 450px;
 			border-radius: 5px;
+			margin-top: 10px;
 		}
 
 		.alert2 {
 			background-color: pink;
 			border: orange solid 2px;
-			margin-top: 10px;
+			margin: 10px 0px 0px 10px;
 			max-width: 350px;
 			border-radius: 5px;
+			display: inline-block;
+		}
+
+		.alert3 {
+			background-color: brown;
+			color: white;
+			border: purple solid 2px;
+			margin: 10px 4px 0px 10px;
+			max-width: 350px;
+			border-radius: 5px;
+			display: inline-block;
 		}
 
 		input {
