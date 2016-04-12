@@ -54,3 +54,7 @@ html {
 		.click-on-me {
 			width: 200px;
 		}
+
+		#transclude-text {
+			color: green;
+		}

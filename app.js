@@ -65,13 +65,26 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
     ///////////CONTROLLERS//////////////
 
-app.controller("myController", ["$scope", "$log", "service", function($scope, $log, service) {
+app.controller("myController", ["$scope", "$log", "service", "$state", "$stateParams", "$timeout",
+	function($scope, $log, service, $state, $stateParams, $timeout) {
 
 	$scope.getArrs = function() {
 		$scope.arrs = service.arrsFunc();
 	}
 
 	$scope.getArrs();
+	
+
+	// The following function with timeout allowed the landing page to go to the second page in a set time using $state.go();
+	// $scope.page2 = function() {
+	// 	$timeout(function() {
+	// 		$state.go("page2");
+	// 	}, 4000)
+	// }
+
+	//$scope.page2();
+	
+	// $scope.page2();
 
 	$scope.test = "This is a test from the controller!"
 	
@@ -80,14 +93,14 @@ app.controller("myController", ["$scope", "$log", "service", function($scope, $l
 	$scope.name = "";
 
 	$scope.upperCase = function(name) {
-		if (name !== "") {
+		if (name !== undefined) {
 		name = name.toUpperCase();
 		service.upperCase(name);
 		$scope.name = "";
 		$scope.getArrs();
 		} else {
 			 $log.warn("You must type something into the input box!");
-			 return false;
+			 // return false;
 		}
 	}
 
@@ -105,9 +118,6 @@ app.controller("otherController", ["$scope", function($scope) {
 	  	name: "Nisha Williams",
 	  	address: "4567 Millrock Dr, Ditterville, OR 76543",
 	  	link: "http://www.nishamwilliams.com",
-	  	object: {
-	  		peter: "Peter"
-	  	}
 	  },
 
 	  $scope.randy = {
@@ -149,6 +159,8 @@ app.controller("otherController", ["$scope", function($scope) {
 }]);
 
 
+
+
 //////////SERVICE/////////////
 
 app.service("service", [function() {
@@ -185,6 +197,9 @@ app.directive("myDirective", function() {
 			// personAddress: "@",
 			personObject: "=",
 			formattedPersonFunction: "&"
-		}
+		},
+		transclude: true
+		
+		
 	}
 })

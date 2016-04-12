@@ -5,7 +5,7 @@
 <h4>Below is my directive.</h4>
 
 <!-- <my-directive person-name="{{ person.name }}" person-address="{{person.address}}"></my-directive> -->
-<my-directive person-object="nisha"></my-directive>
+<!-- <my-directive person-object="nisha"></my-directive>
 <div my-directive person-object="randy"></div>
 <div class="my-directive" person-object="connor"></div>
 <div my-directive person-object="kyler"></div>
@@ -21,6 +21,8 @@
 	</div>
 </div>
 
-<h4>Below is the directive using a function in ng-repeat.</h4>
-	<my-directive person-object="family" formatted-person-function="formattedPerson(placeHolderVariable)" class="alert2" ng-repeat="family in people"></my-directive>
+<h4>Below is the directive using a function in ng-repeat.</h4> -->
+	<my-directive person-object="family" formatted-person-function="formattedPerson(placeHolderVariable)" class="alert2" ng-repeat="family in people">
+		<p>*This is an ng-transclude directive thingy*</p>
+	</my-directive>
 <!-- I was able to assign the person-object a single object in the array as long as the object was named such like $scope.randy, I was not able to repeat the whole array, only the one object.  I had to assign the person-object the variable in the ng-repeat in order to work.  Not sure why but that's how it worked. -->
