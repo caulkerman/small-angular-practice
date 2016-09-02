@@ -93,15 +93,12 @@ app.controller("myController", ["$scope", "$log", "service", "$state", "$statePa
 	$scope.name = "";
 
 	$scope.upperCase = function(name) {
-		if (name !== undefined) {
-		name = name.toUpperCase();
-		service.upperCase(name);
-		$scope.name = "";
-		$scope.getArrs();
-		} else {
-			 $log.warn("You must type something into the input box!");
-			 // return false;
-		}
+		if (name) {
+			name = name.toUpperCase();
+			service.upperCase(name);
+			$scope.name = "";
+			$scope.getArrs();
+		} 
 	}
 
 
@@ -168,8 +165,10 @@ app.service("service", [function() {
 	var arrs = [];
 
 	this.upperCase = function(name) {
+		if (name) {
 		 arrs.push(name);
 		 console.log("console.log arrs in service upperCase function ",arrs)
+		}
 	} 
 
 	this.arrsFunc = function() {
