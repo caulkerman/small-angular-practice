@@ -1,7 +1,7 @@
 <form>
-		<input type="text" ng-model="name"  ng-keydown="$event.which === 13 && upperCase(name)" placeholder="Type Something Here" />
+		<input type="text" ng-model="name"  ng-keydown="$event.which === 13 && vm.upperCase(name)" placeholder="Type Something Here" />
 		<!-- <p>{{upperCase()}}</p> -->
-	<input type="button" value="click here" ng-click="upperCase(name)">
+	<input type="button" value="click here" ng-click="vm.upperCase(name)">
 </form>
 
 	<br />

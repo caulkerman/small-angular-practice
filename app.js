@@ -47,7 +47,7 @@ app.config(function($stateProvider, $urlRouterProvider) {
     .state('page1', {
       url: "/page1",
       templateUrl: "html-templates/page1.html",
-      controller: "myController"
+      controller: "myController as vm"
     })
     
     .state('page2', {
@@ -67,6 +67,8 @@ app.config(function($stateProvider, $urlRouterProvider) {
 
 app.controller("myController", ["$scope", "$log", "service", "$state", "$stateParams", "$timeout",
 	function($scope, $log, service, $state, $stateParams, $timeout) {
+console.log("this is the this ", this);
+	var vm = this;
 
 	$scope.getArrs = function() {
 		$scope.arrs = service.arrsFunc();
@@ -92,7 +94,7 @@ app.controller("myController", ["$scope", "$log", "service", "$state", "$statePa
 
 	$scope.name = "";
 
-	$scope.upperCase = function(name) {
+	vm.upperCase = function(name) {
 		if (name) {
 			name = name.toUpperCase();
 			service.upperCase(name);

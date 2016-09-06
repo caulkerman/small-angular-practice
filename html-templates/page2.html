@@ -22,7 +22,7 @@
 </div>
 
 <h4>Below is the directive using a function in ng-repeat.</h4> -->
-	<my-directive person-object="family" formatted-person-function="formattedPerson(placeHolderVariable)" class="alert2" ng-repeat="family in people">
+	<my-directive person-object="family" formatted-person-function="formattedPerson(placeHolderVariable)" class="alert2" ng-repeat="family in people track by $index">
 		<p>*This is an ng-transclude directive thingy*</p>
 	</my-directive>
 <!-- I was able to assign the person-object a single object in the array as long as the object was named such like $scope.randy, I was not able to repeat the whole array, only the one object.  I had to assign the person-object the variable in the ng-repeat in order to work.  Not sure why but that's how it worked. -->
